@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>News Aggregator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <br/>
+    <h1>Агрегатор новостей</h1>
+    <br/>
+
+    <form action="#" th:action="@{/search}" th:object="${searchRequest}" method="post">
+        <div class="form-group">
+            <label>Поиск:
+                <input class="form-control" th:field="*{title}" placeholder="Заголовок новости"/>
+            </label>
+            <input class="btn btn-primary" type="submit" value="Поиск"/>
+        </div>
+    </form>
+
+    <table class="table table-striped">
+        <tr>
+            <th width="100">Id</th>
+            <th width="120">Title</th>
+            <th width="200">Body</th>
+        </tr>
+
+        <th:block th:each="post:${posts}">
+            <tr>
+                <td th:text="${post.id}"></td>
+                <td th:text="${post.title}"></td>
+                <td th:text="${post.body}"></td>
+            </tr>
+        </th:block>
+    </table>
+
+    <div>
+        <a class="btn btn-primary" th:href="@{/get}">Get news</a>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>
