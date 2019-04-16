@@ -2,9 +2,7 @@ package ru.tochka.aggregator.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -16,5 +14,9 @@ public class Post {
 
     private String title;
 
+    @Column(length = Integer.MAX_VALUE)
     private String body;
+
+    @ManyToOne
+    private Website website;
 }
